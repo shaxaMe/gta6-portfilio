@@ -1,0 +1,45 @@
+:root {
+  /* Colors */
+  --color-bg: #0a0a0a;
+  --color-surface: #111111;
+  --color-text: #f0ede6;
+  --color-accent: #c8f135;
+  --color-metallic: #2a2a2a;
+  --color-border: rgba(255, 255, 255, 0.08);
+  --color-muted: rgba(240, 237, 230, 0.4);
+
+  /* Z-indices */
+  --z-canvas: 0;
+  --z-content: 1;
+  --z-nav: 100;
+  --z-cursor: 200;
+  --z-preloader: 300;
+
+  /* Font families */
+  --font-display: 'Cormorant Garamond', Georgia, serif;
+  --font-body: 'Inter', system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+
+  /* Easing curves */
+  --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
+  --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
+  --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 2rem;
+  --space-lg: 4rem;
+  --space-xl: 8rem;
+
+  /* Container */
+  --container-max: 1440px;
+  --container-padding: 2rem;
+}
+
+@media (max-width: 768px) {
+  :root {
+    --container-padding: 1.25rem;
+  }
+}

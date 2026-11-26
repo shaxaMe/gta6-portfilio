@@ -1,0 +1,188 @@
+.expertise {
+  padding: clamp(5rem, 12vh, 10rem) var(--container-padding);
+  background: var(--color-surface);
+  border-top: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.inner {
+  max-width: var(--container-max);
+  margin: 0 auto;
+}
+
+.sectionLabel {
+  font-family: var(--font-mono);
+  font-size: 0.7rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+  margin-bottom: 1rem;
+}
+
+.headline {
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 5vw, 5.5rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--color-text);
+  margin-bottom: clamp(3rem, 6vh, 5rem);
+  overflow: hidden;
+}
+
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(2rem, 5vw, 6rem);
+  align-items: start;
+}
+
+.categories {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.category {
+  display: flex;
+  align-items: flex-start;
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-border);
+  cursor: pointer;
+  transition: border-color 0.3s ease;
+  background: none;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  text-align: left;
+  width: 100%;
+}
+
+.category:first-child {
+  border-top: 1px solid var(--color-border);
+}
+
+.category:hover,
+.category.active {
+  border-bottom-color: var(--color-accent);
+}
+
+.catNumber {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--color-muted);
+  letter-spacing: 0.1em;
+  padding-top: 0.2rem;
+  min-width: 2ch;
+  transition: color 0.3s ease;
+}
+
+.category.active .catNumber {
+  color: var(--color-accent);
+}
+
+.catLabel {
+  font-family: var(--font-display);
+  font-size: clamp(1.1rem, 2vw, 1.6rem);
+  font-weight: 300;
+  color: var(--color-muted);
+  transition: color 0.3s ease;
+  line-height: 1.1;
+}
+
+.category:hover .catLabel,
+.category.active .catLabel {
+  color: var(--color-text);
+}
+
+.skillsPanel {
+  position: sticky;
+  top: 7rem;
+}
+
+.skillsGrid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.skillTag {
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  padding: 0.5rem 1rem;
+  border: 1px solid var(--color-border);
+  border-radius: 2px;
+  color: var(--color-text);
+  background: transparent;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.skillTag:hover {
+  border-color: var(--color-accent);
+  background: rgba(200, 241, 53, 0.05);
+}
+
+.activeLabel {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 300;
+  color: var(--color-text);
+  margin-bottom: 1.5rem;
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* Accordion for mobile */
+.accordionContent {
+  overflow: hidden;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .layout {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .skillsPanel {
+    display: none;
+  }
+
+  .category {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .accordionContent {
+    display: block;
+    padding: 0;
+    max-height: 0;
+    transition: max-height 0.5s var(--ease-out-expo);
+  }
+
+  .category.active .accordionContent {
+    max-height: 400px;
+    padding-bottom: 1rem;
+  }
+
+  .accordionSkills {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    padding-top: 0.75rem;
+  }
+
+  .accordionSkill {
+    font-family: var(--font-body);
+    font-size: 0.75rem;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid var(--color-border);
+    border-radius: 2px;
+    color: var(--color-text);
+  }
+}
