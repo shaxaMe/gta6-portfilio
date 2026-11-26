@@ -3,7 +3,7 @@ export const siteConfig = {
   title: 'Full-Stack Developer & Creative Engineer',
   tagline: 'I build digital experiences where engineering meets imagination.',
   email: 'ismatovshahzod43@gmail.com',
-  github: 'https://github.com/shahzod-ismatov',
-  linkedin: 'https://linkedin.com/in/shahzod-ismatov',
-  telegram: 'https://t.me/shahzod_ismatov',
+  github: 'https://github.com/shaxaMe',
+  linkedin: 'https://www.linkedin.com/in/shahzod-ismatov-a2581826a/',
+  telegram: 'https://t.me/bek_ismatov',
 }
