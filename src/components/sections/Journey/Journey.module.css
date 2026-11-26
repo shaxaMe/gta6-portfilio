@@ -5,13 +5,14 @@
   overflow: hidden;
 }
 
-/* Atmospheric blue tint */
+/* Cinematic sunset atmosphere — orange, coral, purple */
 .atmosphere {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 55% 65% at 85% 25%, rgba(80, 120, 255, 0.04) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 50% at 10% 75%, rgba(80, 160, 255, 0.025) 0%, transparent 55%);
+    radial-gradient(ellipse 55% 65% at 85% 20%, rgba(255, 169, 72, 0.1) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 60% at 10% 75%, rgba(129, 61, 187, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 55% at 55% 50%, rgba(247, 102, 133, 0.06) 0%, transparent 55%);
   pointer-events: none;
   z-index: 0;
 }
@@ -33,7 +34,7 @@
   font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-coral);
 }
 
 .sectionHeading {
@@ -43,7 +44,7 @@
   letter-spacing: -0.03em;
   line-height: 0.95;
   color: var(--color-text);
-  opacity: 0.08;
+  opacity: 0.07;
   margin-bottom: clamp(4rem, 8vh, 7rem);
   pointer-events: none;
 }
@@ -59,12 +60,12 @@
   grid-template-columns: clamp(7rem, 14vw, 14rem) 1fr;
   gap: clamp(2rem, 5vw, 6rem);
   padding: clamp(3rem, 6vh, 5rem) 0;
-  border-top: 1px solid var(--color-border);
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
   align-items: start;
 }
 
 .chapter:last-child {
-  border-bottom: 1px solid var(--color-border);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
 }
 
 /* ─── LEFT: YEAR + ACCENT LINE ───────────────────────────────────────────────── */
@@ -84,14 +85,14 @@
   letter-spacing: -0.04em;
   line-height: 0.85;
   color: var(--color-text);
-  opacity: 0.15;
+  opacity: 0.18;
 }
 
 .accentLine {
   width: 2.5rem;
   height: 1px;
-  background: var(--color-accent);
-  opacity: 0.65;
+  background: var(--gradient-pink-orange);
+  opacity: 0.75;
 }
 
 /* ─── RIGHT: CONTENT ─────────────────────────────────────────────────────────── */
@@ -107,7 +108,7 @@
   font-family: var(--font-mono);
   font-size: 0.6rem;
   letter-spacing: 0.15em;
-  color: var(--color-accent);
+  color: var(--color-orange);
 }
 
 .chapterTitle {
@@ -141,7 +142,7 @@
   font-size: 0.6rem;
   letter-spacing: 0.08em;
   padding: 0.25rem 0.6rem;
-  border: 1px solid var(--color-border);
+  border: 1px solid rgba(255, 255, 255, 0.07);
   color: var(--color-muted);
 }
 

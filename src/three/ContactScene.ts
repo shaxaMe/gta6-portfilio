@@ -30,9 +30,9 @@ export class ContactScene {
     geometry.setAttribute('position', new THREE.BufferAttribute(this.positions, 3))
 
     const material = new THREE.PointsMaterial({
-      size: 0.015,
-      color: 0xc8f135,
-      opacity: 0.3,
+      size: 0.018,
+      color: 0xf76685,  // Coral — Vice City
+      opacity: 0.35,
       transparent: true,
       sizeAttenuation: true,
       depthWrite: false,

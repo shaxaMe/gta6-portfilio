@@ -1,52 +1,68 @@
 :root {
-  /* Colors */
-  --color-bg: #0a0a0a;
-  --color-surface: #111111;
-  --color-text: #f0ede6;
-  --color-accent: #c8f135;
-  --color-metallic: #2a2a2a;
+  /* ── Base palette — Vice City ──────────────────────────────────────────────── */
+  --color-bg: #111222;
+  --color-surface: #1F1F38;
+  --color-text: #FFF1DC;
+  --color-muted: rgba(255, 241, 220, 0.45);
   --color-border: rgba(255, 255, 255, 0.08);
-  --color-muted: rgba(240, 237, 230, 0.4);
+  --color-metallic: #2a2a2a;
 
-  /* Z-indices */
+  /* ── Vice City accent palette ─────────────────────────────────────────────── */
+  --color-blue: #4C5FCA;
+  --color-purple: #813DBB;
+  --color-pink: #CC46A0;
+  --color-coral: #F76685;
+  --color-orange: #FF885F;
+  --color-amber: #FFA948;
+
+  /* Primary interactive accent — Coral */
+  --color-accent: #F76685;
+
+  /* ── Cinematic gradients ──────────────────────────────────────────────────── */
+  --gradient-sunset: linear-gradient(180deg, #4C5FCA 0%, #813DBB 22%, #CC46A0 44%, #F76685 62%, #FF885F 80%, #FFA948 100%);
+  --gradient-sunset-h: linear-gradient(90deg, #4C5FCA 0%, #813DBB 25%, #CC46A0 50%, #F76685 70%, #FF885F 85%, #FFA948 100%);
+  --gradient-pink-orange: linear-gradient(135deg, #CC46A0 0%, #F76685 50%, #FF885F 100%);
+  --gradient-blue-purple: linear-gradient(135deg, #4C5FCA 0%, #813DBB 100%);
+
+  /* ── Z-indices ────────────────────────────────────────────────────────────── */
   --z-canvas: 0;
   --z-content: 1;
   --z-nav: 100;
   --z-cursor: 200;
   --z-preloader: 300;
 
-  /* Font families */
+  /* ── Typography ───────────────────────────────────────────────────────────── */
   --font-display: 'Cormorant Garamond', Georgia, serif;
   --font-body: 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', 'Courier New', monospace;
 
-  /* Easing curves */
+  /* ── Easing curves ────────────────────────────────────────────────────────── */
   --ease-out-expo: cubic-bezier(0.19, 1, 0.22, 1);
   --ease-in-out: cubic-bezier(0.76, 0, 0.24, 1);
   --ease-out-quart: cubic-bezier(0.25, 1, 0.5, 1);
   --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
 
-  /* Spacing */
+  /* ── Spacing ──────────────────────────────────────────────────────────────── */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2rem;
   --space-lg: 4rem;
   --space-xl: 8rem;
 
-  /* Container */
+  /* ── Container ────────────────────────────────────────────────────────────── */
   --container-max: 1440px;
   --container-padding: 2rem;
 
-  /* Atmospheric colors */
-  --atm-lime: rgba(200, 241, 53, 0.06);
-  --atm-lime-soft: rgba(200, 241, 53, 0.03);
-  --atm-blue: rgba(80, 120, 255, 0.04);
-  --atm-amber: rgba(255, 180, 60, 0.05);
-  --atm-purple: rgba(160, 80, 255, 0.04);
+  /* ── Atmospheric (Vice City tones) ────────────────────────────────────────── */
+  --atm-purple: rgba(129, 61, 187, 0.14);
+  --atm-pink: rgba(204, 70, 160, 0.12);
+  --atm-coral: rgba(247, 102, 133, 0.1);
+  --atm-orange: rgba(255, 136, 95, 0.08);
+  --atm-blue: rgba(76, 95, 202, 0.12);
 
-  /* Grain / Vignette */
-  --grain-opacity: 0.035;
-  --vignette-strength: 0.5;
+  /* ── Grain / Vignette ─────────────────────────────────────────────────────── */
+  --grain-opacity: 0.045;
+  --vignette-strength: 0.65;
   --z-grain: 50;
   --z-vignette: 51;
 }

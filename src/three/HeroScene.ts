@@ -12,6 +12,7 @@ export class HeroScene {
 
   private keyLight!: THREE.PointLight
   private rimLight!: THREE.PointLight
+  private fillLight!: THREE.PointLight
   private ambientLight!: THREE.AmbientLight
 
   constructor() {
@@ -35,16 +36,20 @@ export class HeroScene {
     this.mesh = new THREE.Mesh(geometry, material)
     this.scene.add(this.mesh)
 
-    // Lights
-    this.keyLight = new THREE.PointLight(0xc8f135, 3, 20)
+    // Lights — Vice City sunset palette
+    this.keyLight = new THREE.PointLight(0xcc46a0, 4, 20)  // Flamingo pink
     this.keyLight.position.set(3, 3, 5)
     this.scene.add(this.keyLight)
 
-    this.rimLight = new THREE.PointLight(0xffffff, 0.8, 15)
+    this.rimLight = new THREE.PointLight(0x4c5fca, 1.5, 15)  // Dusk blue
     this.rimLight.position.set(-3, -1, -3)
     this.scene.add(this.rimLight)
 
-    this.ambientLight = new THREE.AmbientLight(0x111111, 1)
+    this.fillLight = new THREE.PointLight(0xff885f, 1.2, 18)  // Tangerine orange
+    this.fillLight.position.set(0, -4, 3)
+    this.scene.add(this.fillLight)
+
+    this.ambientLight = new THREE.AmbientLight(0x1a1030, 2)  // Deep purple ambient
     this.scene.add(this.ambientLight)
   }
 

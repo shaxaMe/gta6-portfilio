@@ -8,13 +8,14 @@
   align-items: center;
 }
 
-/* Atmospheric gradient */
+/* Cinematic coral/pink sunset atmosphere */
 .atmosphere {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 60% 70% at 85% 50%, rgba(200, 241, 53, 0.045) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 55% at 15% 20%, rgba(200, 241, 53, 0.02) 0%, transparent 55%);
+    radial-gradient(ellipse 60% 72% at 88% 52%, rgba(247, 102, 133, 0.16) 0%, transparent 60%),
+    radial-gradient(ellipse 45% 58% at 15% 25%, rgba(255, 136, 95, 0.1) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 50% at 55% 85%, rgba(129, 61, 187, 0.08) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -30,7 +31,7 @@
   font-weight: 300;
   line-height: 0.85;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.03);
+  -webkit-text-stroke: 1px rgba(247, 102, 133, 0.06);
   letter-spacing: -0.04em;
   user-select: none;
   pointer-events: none;
@@ -58,7 +59,7 @@
   font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-coral);
   flex-shrink: 0;
 }
 
@@ -83,7 +84,7 @@
 .accentLine {
   width: 60px;
   height: 1px;
-  background: var(--color-accent);
+  background: var(--gradient-pink-orange);
   margin-bottom: clamp(2rem, 4vh, 3rem);
 }
 

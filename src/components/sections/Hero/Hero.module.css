@@ -13,13 +13,15 @@
   z-index: var(--z-canvas);
 }
 
-/* Atmospheric gradient */
+/* Cinematic sunset atmospheric gradients */
 .atmosphere {
   position: absolute;
   inset: 0;
   background:
-    radial-gradient(ellipse 55% 75% at 72% 55%, rgba(200, 241, 53, 0.065) 0%, transparent 60%),
-    radial-gradient(ellipse 35% 55% at 18% 75%, rgba(200, 241, 53, 0.03) 0%, transparent 55%);
+    radial-gradient(ellipse 65% 85% at 68% 42%, rgba(129, 61, 187, 0.32) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 65% at 92% 80%, rgba(204, 70, 160, 0.2) 0%, transparent 55%),
+    radial-gradient(ellipse 40% 55% at 12% 55%, rgba(76, 95, 202, 0.18) 0%, transparent 50%),
+    radial-gradient(ellipse 35% 45% at 50% 90%, rgba(247, 102, 133, 0.1) 0%, transparent 50%);
   pointer-events: none;
   z-index: 0;
 }
@@ -34,7 +36,7 @@
   font-weight: 300;
   line-height: 0.8;
   color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.025);
+  -webkit-text-stroke: 1px rgba(255, 241, 220, 0.03);
   letter-spacing: -0.05em;
   user-select: none;
   pointer-events: none;
@@ -66,7 +68,7 @@
   font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--color-accent);
+  color: var(--color-coral);
 }
 
 /* Main content */
@@ -139,7 +141,10 @@
   font-weight: 300;
   letter-spacing: -0.03em;
   line-height: 0.95;
-  color: var(--color-accent);
+  background: var(--gradient-pink-orange);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   text-align: right;
   opacity: 0;
   transform: translateY(12px);
@@ -152,7 +157,7 @@
   bottom: clamp(3rem, 7vh, 6rem);
   height: clamp(3.5rem, 7vh, 6rem);
   width: 1px;
-  background: var(--color-border);
+  background: linear-gradient(180deg, transparent, rgba(247, 102, 133, 0.3), transparent);
   transform: translateX(-50%);
   z-index: 2;
 }

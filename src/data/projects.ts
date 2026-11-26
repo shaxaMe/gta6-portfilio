@@ -21,7 +21,7 @@ export const projects: Project[] = [
     description:
       'Frontend development and modern web interface implementation for a business platform.',
     url: null,
-    accentColor: '#c8f135',
+    accentColor: '#813DBB',  // Orchid purple
   },
   {
     id: 'smart-money-bot',
@@ -33,7 +33,7 @@ export const projects: Project[] = [
     description:
       'A Telegram-based market analysis and paper-trading system featuring automated signal monitoring and strategy analysis.',
     url: null,
-    accentColor: '#ffffff',
+    accentColor: '#4C5FCA',  // Dusk blue
   },
   {
     id: 'ecommerce-integration',
@@ -45,7 +45,7 @@ export const projects: Project[] = [
     description:
       'Integration of e-commerce systems — product discovery, API authentication, order data retrieval and automation workflows.',
     url: null,
-    accentColor: '#c8f135',
+    accentColor: '#FF885F',  // Tangerine orange
   },
   {
     id: 'rag-experiments',
@@ -57,7 +57,7 @@ export const projects: Project[] = [
     description:
       'Experimental AI applications for contextual information retrieval and intelligent question answering.',
     url: null,
-    accentColor: '#ffffff',
+    accentColor: '#CC46A0',  // Flamingo pink
   },
   {
     id: 'project-05',
@@ -68,6 +68,6 @@ export const projects: Project[] = [
     tech: [],
     description: 'The next chapter is being written. Stay tuned for what comes next.',
     url: null,
-    accentColor: '#c8f135',
+    accentColor: '#F76685',  // Coral
   },
 ]
