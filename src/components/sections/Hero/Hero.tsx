@@ -18,13 +18,13 @@ export default function Hero({ playReveal }: HeroProps) {
   const headingRef = useRef<HTMLHeadingElement>(null)
   const subtitleRef = useRef<HTMLParagraphElement>(null)
   const taglineRef = useRef<HTMLSpanElement>(null)
+  const taglinePreRef = useRef<HTMLSpanElement>(null)
   const sceneRef = useRef<HeroScene | null>(null)
   const rafRef = useRef<number>(0)
   const mouseXRef = useRef(0)
   const mouseYRef = useRef(0)
   const scrollProgressRef = useRef(0)
 
-  // Init Three.js scene
   useEffect(() => {
     const isMobile = window.innerWidth < 768
     if (isMobile) return
@@ -40,7 +40,6 @@ export default function Hero({ playReveal }: HeroProps) {
 
     window.addEventListener('mousemove', onMouseMove)
 
-    // Render loop
     function tick() {
       rafRef.current = requestAnimationFrame(tick)
       const rendererState = getRenderer()
@@ -67,7 +66,6 @@ export default function Hero({ playReveal }: HeroProps) {
     }
   }, [])
 
-  // Scroll-driven animation
   useEffect(() => {
     const section = sectionRef.current
     if (!section) return
@@ -87,13 +85,13 @@ export default function Hero({ playReveal }: HeroProps) {
     return () => ctx.revert()
   }, [])
 
-  // Text reveal after preloader
   useEffect(() => {
     if (!playReveal) return
 
     const heading = headingRef.current
     const subtitle = subtitleRef.current
     const tagline = taglineRef.current
+    const taglinePre = taglinePreRef.current
     if (!heading) return
 
     const ctx = gsap.context(() => {
@@ -118,19 +116,15 @@ export default function Hero({ playReveal }: HeroProps) {
       })
 
       if (subtitle) {
-        tl.to(
-          subtitle,
-          { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-          '-=0.5'
-        )
+        tl.to(subtitle, { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' }, '-=0.5')
+      }
+
+      if (taglinePre) {
+        tl.to(taglinePre, { opacity: 1, duration: 0.6, ease: 'power3.out' }, '-=0.6')
       }
 
       if (tagline) {
-        tl.to(
-          tagline,
-          { opacity: 1, y: 0, duration: 0.8, ease: 'power3.out' },
-          '-=0.5'
-        )
+        tl.to(tagline, { opacity: 1, y: 0, duration: 0.9, ease: 'power3.out' }, '-=0.5')
       }
     }, heading)
 
@@ -140,23 +134,35 @@ export default function Hero({ playReveal }: HeroProps) {
   return (
     <section ref={sectionRef} className={styles.hero} data-section="hero">
       <div ref={canvasRef} className={styles.canvas} aria-hidden="true" />
+      <div className={styles.atmosphere} aria-hidden="true" />
+      <span className={styles.yearMarker} aria-hidden="true">25</span>
+
+      <div className={styles.topBar}>
+        <span className={styles.locationTag}>Tashkent, UZ</span>
+        <span className={styles.statusTag}>Available for work</span>
+      </div>
 
       <div className={styles.content}>
-        <h1 ref={headingRef} className={styles.heading}>
-          <span className={styles.line}>SHAHZOD</span>
-          <span className={styles.line}>ISMATOV</span>
-        </h1>
-        <p ref={subtitleRef} className={styles.subtitle}>
-          Full-Stack Developer &amp; Creative Engineer
-        </p>
-        <span ref={taglineRef} className={styles.tagline}>
-          I build digital experiences where engineering meets imagination.
-        </span>
+        <div className={styles.nameBlock}>
+          <h1 ref={headingRef} className={styles.heading}>
+            <span className={styles.line}>SHAHZOD</span>
+            <span className={styles.line}>ISMATOV</span>
+          </h1>
+          <p ref={subtitleRef} className={styles.subtitle}>
+            Full-Stack Developer &amp; Creative Engineer
+          </p>
+        </div>
+
+        <div className={styles.taglineBlock}>
+          <span ref={taglinePreRef} className={styles.taglinePre}>I Build</span>
+          <span ref={taglineRef} className={styles.tagline}>
+            DIGITAL<br />WORLDS.
+          </span>
+        </div>
       </div>
 
-      <div className={styles.scrollIndicator} aria-hidden="true">
-        ↓ SCROLL
-      </div>
+      <div className={styles.dividerLine} aria-hidden="true" />
+      <div className={styles.scrollIndicator} aria-hidden="true">↓ SCROLL</div>
     </section>
   )
 }

@@ -3,6 +3,7 @@ import { initRenderer, disposeRenderer } from '@/three/renderer'
 import { initLenis, destroyLenis } from '@/animations/lenis'
 
 import Preloader from '@/components/Preloader/Preloader'
+import CinematicOverlay from '@/components/CinematicOverlay/CinematicOverlay'
 import CustomCursor from '@/components/CustomCursor/CustomCursor'
 import Navigation from '@/components/Navigation/Navigation'
 import Hero from '@/components/sections/Hero/Hero'
@@ -38,6 +39,7 @@ export default function App() {
   return (
     <>
       <Preloader onComplete={handlePreloaderComplete} />
+      <CinematicOverlay />
       <CustomCursor />
       <Navigation loaded={loaded} />
       <main>

@@ -1,18 +1,32 @@
 .beyond {
+  position: relative;
   padding: clamp(5rem, 12vh, 10rem) var(--container-padding);
   background: var(--color-surface);
   border-top: 1px solid var(--color-border);
   overflow: hidden;
 }
 
+/* Atmospheric purple/blue */
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 65% at 80% 30%, rgba(160, 80, 255, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 15% 70%, rgba(80, 120, 255, 0.03) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
 .inner {
+  position: relative;
+  z-index: 1;
   max-width: var(--container-max);
   margin: 0 auto;
 }
 
 .sectionLabel {
   font-family: var(--font-mono);
-  font-size: 0.7rem;
+  font-size: 0.65rem;
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-accent);
@@ -21,87 +35,73 @@
 
 .headline {
   font-family: var(--font-display);
-  font-size: clamp(2rem, 5vw, 5.5rem);
+  font-size: clamp(3rem, 8vw, 10rem);
   font-weight: 300;
   letter-spacing: -0.03em;
-  line-height: 0.95;
+  line-height: 0.9;
   color: var(--color-text);
-  margin-bottom: clamp(3rem, 6vh, 5rem);
+  margin-bottom: clamp(3rem, 7vh, 6rem);
   overflow: hidden;
 }
 
-.grid {
+/* ─── LIST ───────────────────────────────────────────────────────────────────── */
+.list {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid var(--color-border);
+}
+
+.item {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-  gap: 1px;
-  background: var(--color-border);
-}
-
-.tile {
-  background: var(--color-surface);
-  padding: clamp(1.5rem, 3vw, 2.5rem);
+  grid-template-columns: 3rem 1fr auto;
+  align-items: center;
+  gap: 1.5rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid var(--color-border);
   cursor: default;
-  position: relative;
-  overflow: hidden;
-  transition: background 0.3s ease;
-  opacity: 0;
-  transform: translateY(20px);
-
-  /* 3D tilt effect */
-  transform-style: preserve-3d;
-  perspective: 400px;
 }
 
-.tile::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: rgba(200, 241, 53, 0);
-  transition: background 0.4s ease;
-  pointer-events: none;
+.item:hover .itemLine {
+  width: 60px;
+  opacity: 0.6;
 }
 
-.tile:hover::before {
-  background: rgba(200, 241, 53, 0.03);
+.item:hover .itemLabel {
+  color: var(--color-text);
 }
 
-.tileBorder {
-  position: absolute;
-  inset: 0;
-  border: 1px solid transparent;
-  transition: border-color 0.4s ease;
-  pointer-events: none;
-}
-
-.tile:hover .tileBorder {
-  border-color: rgba(200, 241, 53, 0.25);
-}
-
-.tileNumber {
+.itemNumber {
   font-family: var(--font-mono);
   font-size: 0.6rem;
-  letter-spacing: 0.1em;
+  letter-spacing: 0.15em;
   color: var(--color-accent);
-  margin-bottom: 1rem;
-  display: block;
+  flex-shrink: 0;
 }
 
-.tileLabel {
+.itemLabel {
   font-family: var(--font-display);
-  font-size: clamp(1rem, 1.8vw, 1.3rem);
+  font-size: clamp(1.2rem, 2.2vw, 2rem);
   font-weight: 300;
-  color: var(--color-text);
-  line-height: 1.2;
+  letter-spacing: -0.01em;
+  color: rgba(240, 237, 230, 0.7);
+  transition: color 0.3s ease;
+}
+
+.itemLine {
+  width: 20px;
+  height: 1px;
+  background: var(--color-accent);
+  opacity: 0.3;
+  transition: width 0.4s var(--ease-out-expo), opacity 0.4s ease;
+  flex-shrink: 0;
 }
 
 @media (max-width: 768px) {
-  .grid {
-    grid-template-columns: repeat(2, 1fr);
+  .item {
+    grid-template-columns: 2.5rem 1fr;
   }
-}
 
-@media (max-width: 480px) {
-  .grid {
-    grid-template-columns: 1fr;
+  .itemLine {
+    display: none;
   }
 }

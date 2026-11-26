@@ -1,29 +1,31 @@
-/* ─── SECTION ──────────────────────────────────────────────────────────────── */
 .journey {
   position: relative;
   background: var(--color-bg);
   border-top: 1px solid var(--color-border);
-}
-
-.sticky {
-  position: sticky;
-  top: 0;
-  height: 100vh;
   overflow: hidden;
-  display: flex;
-  flex-direction: column;
 }
 
-/* ─── TOP BAR ───────────────────────────────────────────────────────────────── */
-.topBar {
+/* Atmospheric blue tint */
+.atmosphere {
   position: absolute;
-  top: clamp(1.5rem, 4vh, 2.5rem);
-  left: var(--container-padding);
-  right: var(--container-padding);
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  z-index: 3;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 65% at 85% 25%, rgba(80, 120, 255, 0.04) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 50% at 10% 75%, rgba(80, 160, 255, 0.025) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.inner {
+  position: relative;
+  z-index: 1;
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: clamp(5rem, 12vh, 10rem) var(--container-padding);
+}
+
+.topBar {
+  margin-bottom: 1rem;
 }
 
 .sectionLabel {
@@ -34,383 +36,131 @@
   color: var(--color-accent);
 }
 
-/* milestone counter — 01/05 */
-.counter {
-  font-family: var(--font-mono);
-  font-size: 0.75rem;
-  letter-spacing: 0.08em;
-  display: flex;
-  align-items: center;
-  gap: 0.25rem;
-}
-
-.counterActive {
-  color: var(--color-accent);
-  font-size: 1.1rem;
-  line-height: 1;
-  transition: color 0.3s ease;
-}
-
-.counterSep {
-  color: var(--color-border);
-}
-
-.counterTotal {
-  color: var(--color-muted);
-}
-
-/* ─── BIG BACKGROUND HEADING ────────────────────────────────────────────────── */
-.bgHeading {
-  position: absolute;
-  top: 50%;
-  left: var(--container-padding);
-  transform: translateY(-50%);
+.sectionHeading {
   font-family: var(--font-display);
-  font-size: clamp(2.5rem, 6vw, 7rem);
+  font-size: clamp(2rem, 5vw, 6rem);
   font-weight: 300;
-  letter-spacing: -0.04em;
+  letter-spacing: -0.03em;
   line-height: 0.95;
   color: var(--color-text);
-  opacity: 0.04;
+  opacity: 0.08;
+  margin-bottom: clamp(4rem, 8vh, 7rem);
   pointer-events: none;
-  user-select: none;
-  white-space: nowrap;
-  z-index: 0;
 }
 
-/* ─── TRACK WRAPPER ──────────────────────────────────────────────────────────── */
-.trackWrap {
-  position: absolute;
-  bottom: clamp(3.5rem, 10vh, 6rem);
-  left: 0;
-  right: 0;
-}
-
-/* Rail — the static grey line */
-.rail {
-  position: absolute;
-  bottom: 56px;
-  left: 0;
-  right: 0;
-  height: 1px;
-  background: var(--color-border);
-}
-
-/* Animated fill line */
-.progressLine {
-  position: absolute;
-  bottom: 56px;
-  left: 0;
-  height: 1px;
-  background: var(--color-accent);
-  transition: width 0s;
-  z-index: 1;
-}
-
-/* Scrolling track */
-.track {
-  display: flex;
-  align-items: flex-end;
-  will-change: transform;
-  position: relative;
-}
-
-.trackSpacer {
-  flex-shrink: 0;
-  width: var(--container-padding);
-}
-
-/* ─── INDIVIDUAL MILESTONE ───────────────────────────────────────────────────── */
-.milestone {
-  flex-shrink: 0;
-  width: clamp(240px, 22vw, 320px);
-  position: relative;
+/* ─── CHAPTERS ───────────────────────────────────────────────────────────────── */
+.chapters {
   display: flex;
   flex-direction: column;
-  padding-bottom: 56px; /* space below dot for the rail line */
 }
 
-/* Top milestones — card above, connector going down to dot */
-.milestoneTop {
-  align-items: flex-start;
-  flex-direction: column-reverse; /* card then ghost year below */
-  padding-top: 0;
+.chapter {
+  display: grid;
+  grid-template-columns: clamp(7rem, 14vw, 14rem) 1fr;
+  gap: clamp(2rem, 5vw, 6rem);
+  padding: clamp(3rem, 6vh, 5rem) 0;
+  border-top: 1px solid var(--color-border);
+  align-items: start;
 }
 
-/* Bottom milestones — dot is at bottom, card goes below */
-.milestoneBottom {
-  align-items: flex-start;
+.chapter:last-child {
+  border-bottom: 1px solid var(--color-border);
+}
+
+/* ─── LEFT: YEAR + ACCENT LINE ───────────────────────────────────────────────── */
+.chapterLeft {
+  display: flex;
   flex-direction: column;
-  padding-bottom: calc(56px + clamp(180px, 20vh, 280px));
-  margin-bottom: calc(-1 * clamp(180px, 20vh, 280px));
+  align-items: flex-start;
+  gap: 1.25rem;
+  padding-top: 0.5rem;
 }
 
-/* Ghost year — decorative */
-.ghostYear {
+.chapterYear {
+  display: block;
   font-family: var(--font-display);
-  font-size: clamp(5rem, 10vw, 11rem);
+  font-size: clamp(3.5rem, 7vw, 8.5rem);
   font-weight: 300;
-  letter-spacing: -0.05em;
+  letter-spacing: -0.04em;
   line-height: 0.85;
   color: var(--color-text);
-  opacity: 0.05;
-  pointer-events: none;
-  user-select: none;
-  display: block;
-  margin-bottom: 0.5rem;
-  transition: opacity 0.5s ease;
+  opacity: 0.15;
 }
 
-.milestone.isActive .ghostYear,
-.milestone.isPast .ghostYear {
-  opacity: 0.12;
-}
-
-.milestone.isActive .ghostYear {
-  opacity: 0.22;
-  color: var(--color-accent);
-}
-
-/* ─── CARD ───────────────────────────────────────────────────────────────────── */
-.card {
-  background: var(--color-surface);
-  border: 1px solid var(--color-border);
-  padding: 1.25rem 1.5rem 1.5rem;
-  margin-right: 1.5rem;
-  position: relative;
-  overflow: hidden;
-  transition: border-color 0.4s ease, transform 0.5s var(--ease-out-expo);
-  transform: translateY(8px);
-  opacity: 0.4;
-}
-
-/* Accent top border on card */
-.card::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
+.accentLine {
+  width: 2.5rem;
   height: 1px;
   background: var(--color-accent);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.5s var(--ease-out-expo);
+  opacity: 0.65;
 }
 
-.milestone.isActive .card,
-.milestone.isPast .card {
-  opacity: 1;
-  transform: translateY(0);
-  border-color: rgba(255, 255, 255, 0.12);
+/* ─── RIGHT: CONTENT ─────────────────────────────────────────────────────────── */
+.chapterContent {
+  padding-top: 0.5rem;
 }
 
-.milestone.isActive .card {
-  border-color: rgba(200, 241, 53, 0.25);
+.chapterMeta {
+  margin-bottom: 0.75rem;
 }
 
-.milestone.isActive .card::before {
-  transform: scaleX(1);
-}
-
-.cardIndex {
+.chapterIndex {
   font-family: var(--font-mono);
   font-size: 0.6rem;
   letter-spacing: 0.15em;
   color: var(--color-accent);
-  margin-bottom: 0.6rem;
-  opacity: 0;
-  transition: opacity 0.4s ease 0.1s;
 }
 
-.milestone.isActive .cardIndex,
-.milestone.isPast .cardIndex {
-  opacity: 1;
-}
-
-.cardTitle {
+.chapterTitle {
   font-family: var(--font-display);
-  font-size: clamp(1rem, 1.6vw, 1.4rem);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
+  font-size: clamp(2rem, 4vw, 5rem);
+  font-weight: 300;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
   color: var(--color-text);
-  margin-bottom: 0.6rem;
+  margin-bottom: 1rem;
 }
 
-.cardDesc {
+.chapterDesc {
   font-family: var(--font-body);
-  font-size: clamp(0.75rem, 0.9vw, 0.85rem);
-  line-height: 1.65;
+  font-size: clamp(0.85rem, 1.1vw, 0.95rem);
+  line-height: 1.75;
   color: var(--color-muted);
-  margin-bottom: 0.9rem;
+  max-width: 55ch;
+  margin-bottom: 1.25rem;
 }
 
 /* ─── TAGS ───────────────────────────────────────────────────────────────────── */
 .tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.3rem;
+  gap: 0.4rem;
 }
 
 .tag {
   font-family: var(--font-mono);
   font-size: 0.6rem;
   letter-spacing: 0.08em;
-  padding: 0.2rem 0.5rem;
+  padding: 0.25rem 0.6rem;
   border: 1px solid var(--color-border);
   color: var(--color-muted);
-  transition: border-color 0.3s ease, color 0.3s ease;
-}
-
-.milestone.isActive .tag {
-  border-color: rgba(200, 241, 53, 0.3);
-  color: var(--color-accent);
-}
-
-.milestone.isPast .tag {
-  border-color: rgba(255, 255, 255, 0.1);
-  color: rgba(240, 237, 230, 0.6);
-}
-
-/* ─── DOT ON RAIL ────────────────────────────────────────────────────────────── */
-.dot {
-  position: absolute;
-  bottom: 48px; /* center on rail */
-  left: 0;
-  width: 20px;
-  height: 20px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.dotInner {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 1.5px solid var(--color-border);
-  background: var(--color-bg);
-  transition: border-color 0.4s ease, background 0.4s ease, transform 0.4s ease;
-}
-
-.milestone.isActive .dotInner {
-  border-color: var(--color-accent);
-  background: var(--color-accent);
-  transform: scale(1.4);
-}
-
-.milestone.isPast .dotInner {
-  border-color: var(--color-accent);
-  background: var(--color-bg);
-}
-
-/* Connector — vertical line from card to dot */
-.connector {
-  position: absolute;
-  left: 9px; /* center of dot */
-  bottom: 68px; /* above dot */
-  width: 1px;
-  height: 0;
-  background: var(--color-border);
-  transition: height 0.4s ease, background 0.4s ease;
-}
-
-.milestone.isActive .connector,
-.milestone.isPast .connector {
-  height: 2.5rem;
-  background: rgba(200, 241, 53, 0.4);
-}
-
-/* Connector direction flips for bottom milestones */
-.milestoneBottom .connector {
-  top: 0;
-  bottom: auto;
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════════
    MOBILE
 ══════════════════════════════════════════════════════════════════════════════ */
-.mobileWrap {
-  padding: 4rem var(--container-padding) 5rem;
-}
+@media (max-width: 768px) {
+  .chapter {
+    grid-template-columns: 1fr;
+    gap: 0.75rem;
+  }
 
-.mobileHeading {
-  font-family: var(--font-display);
-  font-size: clamp(1.6rem, 6vw, 2.5rem);
-  font-weight: 300;
-  letter-spacing: -0.03em;
-  line-height: 1.0;
-  color: var(--color-text);
-  margin-top: 2.5rem;
-  margin-bottom: 3rem;
-}
+  .chapterLeft {
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+  }
 
-.mobileList {
-  display: flex;
-  flex-direction: column;
-}
-
-.mobileItem {
-  display: flex;
-  gap: 1.25rem;
-}
-
-.mobileLeft {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  flex-shrink: 0;
-  padding-top: 0.3rem;
-}
-
-.mobileDot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  border: 1.5px solid var(--color-accent);
-  background: var(--color-bg);
-  flex-shrink: 0;
-}
-
-.mobileConnector {
-  flex: 1;
-  width: 1px;
-  background: var(--color-border);
-  margin: 0.4rem 0;
-  min-height: 1.5rem;
-}
-
-.mobileContent {
-  padding-bottom: 2.5rem;
-  flex: 1;
-}
-
-.mobileYear {
-  display: block;
-  font-family: var(--font-display);
-  font-size: 3rem;
-  font-weight: 300;
-  letter-spacing: -0.04em;
-  line-height: 0.9;
-  color: var(--color-accent);
-  opacity: 0.6;
-  margin-bottom: 0.5rem;
-}
-
-.mobileTitle {
-  font-family: var(--font-display);
-  font-size: 1.25rem;
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  color: var(--color-text);
-  margin-bottom: 0.4rem;
-}
-
-.mobileDesc {
-  font-family: var(--font-body);
-  font-size: 0.85rem;
-  line-height: 1.65;
-  color: var(--color-muted);
-  margin-bottom: 0.75rem;
+  .chapterYear {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+  }
 }

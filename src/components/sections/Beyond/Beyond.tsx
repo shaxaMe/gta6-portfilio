@@ -20,16 +20,15 @@ const INTERESTS = [
 export default function Beyond() {
   const sectionRef = useRef<HTMLElement>(null)
   const headlineRef = useRef<HTMLHeadingElement>(null)
-  const gridRef = useRef<HTMLDivElement>(null)
+  const listRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
     const section = sectionRef.current
     const headline = headlineRef.current
-    const grid = gridRef.current
-    if (!section || !headline || !grid) return
+    const list = listRef.current
+    if (!section || !headline || !list) return
 
     const ctx = gsap.context(() => {
-      // Headline reveal
       const split = new SplitText(headline, { type: 'chars,words' })
       gsap.set(split.chars, {
         y: '110%',
@@ -54,18 +53,19 @@ export default function Beyond() {
         once: true,
       })
 
-      // Tiles stagger-in
-      const tiles = grid.querySelectorAll<HTMLElement>(`.${styles.tile}`)
+      const items = list.querySelectorAll<HTMLElement>(`.${styles.item}`)
+      gsap.set(items, { opacity: 0, x: -16 })
+
       ScrollTrigger.create({
-        trigger: grid,
+        trigger: list,
         start: 'top 80%',
         onEnter: () => {
-          gsap.to(tiles, {
+          gsap.to(items, {
             opacity: 1,
-            y: 0,
-            duration: 0.7,
+            x: 0,
+            duration: 0.65,
             ease: 'power3.out',
-            stagger: 0.07,
+            stagger: 0.06,
           })
         },
         once: true,
@@ -75,59 +75,23 @@ export default function Beyond() {
     return () => ctx.revert()
   }, [])
 
-  // 3D tilt on mouse move
-  function handleTileMouseMove(e: React.MouseEvent<HTMLDivElement>) {
-    const tile = e.currentTarget
-    const rect = tile.getBoundingClientRect()
-    const x = e.clientX - rect.left
-    const y = e.clientY - rect.top
-    const cx = rect.width / 2
-    const cy = rect.height / 2
-    const rotateY = ((x - cx) / cx) * 6
-    const rotateX = -((y - cy) / cy) * 6
-
-    gsap.to(tile, {
-      rotateX,
-      rotateY,
-      duration: 0.4,
-      ease: 'power2.out',
-      transformPerspective: 400,
-    })
-  }
-
-  function handleTileMouseLeave(e: React.MouseEvent<HTMLDivElement>) {
-    gsap.to(e.currentTarget, {
-      rotateX: 0,
-      rotateY: 0,
-      duration: 0.6,
-      ease: 'power3.out',
-    })
-  }
-
   return (
     <section ref={sectionRef} className={styles.beyond} data-section="beyond">
+      <div className={styles.atmosphere} aria-hidden="true" />
+
       <div className={styles.inner}>
         <p className={styles.sectionLabel}>05 — Interests</p>
 
         <h2 ref={headlineRef} className={styles.headline}>
-          ALWAYS EXPLORING
-          <br />
-          WHAT&apos;S NEXT.
+          STILL<br />EXPLORING.
         </h2>
 
-        <div ref={gridRef} className={styles.grid}>
+        <div ref={listRef} className={styles.list}>
           {INTERESTS.map((item, i) => (
-            <div
-              key={item.label}
-              className={styles.tile}
-              onMouseMove={handleTileMouseMove}
-              onMouseLeave={handleTileMouseLeave}
-            >
-              <div className={styles.tileBorder} />
-              <span className={styles.tileNumber}>
-                {String(i + 1).padStart(2, '0')}
-              </span>
-              <span className={styles.tileLabel}>{item.label}</span>
+            <div key={item.label} className={styles.item}>
+              <span className={styles.itemNumber}>{String(i + 1).padStart(2, '0')}</span>
+              <span className={styles.itemLabel}>{item.label}</span>
+              <div className={styles.itemLine} />
             </div>
           ))}
         </div>

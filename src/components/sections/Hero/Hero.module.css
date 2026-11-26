@@ -4,6 +4,7 @@
   height: 100vh;
   min-height: 600px;
   overflow: hidden;
+  background: var(--color-bg);
 }
 
 .canvas {
@@ -12,20 +13,82 @@
   z-index: var(--z-canvas);
 }
 
+/* Atmospheric gradient */
+.atmosphere {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 55% 75% at 72% 55%, rgba(200, 241, 53, 0.065) 0%, transparent 60%),
+    radial-gradient(ellipse 35% 55% at 18% 75%, rgba(200, 241, 53, 0.03) 0%, transparent 55%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Ghost year */
+.yearMarker {
+  position: absolute;
+  right: -0.03em;
+  bottom: -0.08em;
+  font-family: var(--font-display);
+  font-size: clamp(28vw, 38vw, 48vw);
+  font-weight: 300;
+  line-height: 0.8;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.025);
+  letter-spacing: -0.05em;
+  user-select: none;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Top bar */
+.topBar {
+  position: absolute;
+  top: clamp(1.5rem, 4vh, 2.5rem);
+  left: var(--container-padding);
+  right: var(--container-padding);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+}
+
+.locationTag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+}
+
+.statusTag {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--color-accent);
+}
+
+/* Main content */
 .content {
   position: relative;
-  z-index: var(--z-content);
+  z-index: 2;
   height: 100%;
   display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  padding: 0 var(--container-padding) clamp(3rem, 6vh, 5rem);
-  max-width: var(--container-max);
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 0 var(--container-padding) clamp(3rem, 7vh, 6rem);
+  gap: 2rem;
+}
+
+.nameBlock {
+  flex: 1;
+  min-width: 0;
 }
 
 .heading {
   font-family: var(--font-display);
-  font-size: clamp(4rem, 15vw, 18rem);
+  font-size: clamp(4rem, 13vw, 16rem);
   font-weight: 300;
   letter-spacing: -0.03em;
   line-height: 0.9;
@@ -40,24 +103,58 @@
 }
 
 .subtitle {
-  font-family: var(--font-body);
-  font-size: clamp(0.9rem, 1.5vw, 1.1rem);
-  font-weight: 400;
-  letter-spacing: 0.08em;
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 0.85vw, 0.75rem);
+  letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--color-muted);
-  margin-top: 1.5rem;
+  margin-top: 1.25rem;
+  opacity: 0;
+  transform: translateY(10px);
+}
+
+/* Right column tagline */
+.taglineBlock {
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  text-align: right;
+  padding-bottom: 0.1em;
+}
+
+.taglinePre {
+  font-family: var(--font-mono);
+  font-size: clamp(0.6rem, 0.85vw, 0.75rem);
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  margin-bottom: 0.6rem;
   opacity: 0;
 }
 
 .tagline {
-  font-family: var(--font-body);
-  font-size: clamp(0.85rem, 1.2vw, 1rem);
-  color: var(--color-muted);
-  max-width: 36ch;
-  margin-top: 0.75rem;
-  line-height: 1.6;
+  font-family: var(--font-display);
+  font-size: clamp(2.2rem, 5.5vw, 7rem);
+  font-weight: 300;
+  letter-spacing: -0.03em;
+  line-height: 0.95;
+  color: var(--color-accent);
+  text-align: right;
   opacity: 0;
+  transform: translateY(12px);
+}
+
+/* Vertical divider */
+.dividerLine {
+  position: absolute;
+  left: 50%;
+  bottom: clamp(3rem, 7vh, 6rem);
+  height: clamp(3.5rem, 7vh, 6rem);
+  width: 1px;
+  background: var(--color-border);
+  transform: translateX(-50%);
+  z-index: 2;
 }
 
 .scrollIndicator {
@@ -75,14 +172,29 @@
 }
 
 @keyframes fadeInDelay {
-  to {
-    opacity: 1;
-  }
+  to { opacity: 1; }
 }
 
 @media (max-width: 768px) {
   .content {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-end;
+    gap: 2rem;
     padding-bottom: clamp(2rem, 5vh, 3rem);
+  }
+
+  .taglineBlock {
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .tagline {
+    text-align: left;
+  }
+
+  .dividerLine {
+    display: none;
   }
 
   .scrollIndicator {

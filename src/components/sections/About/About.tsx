@@ -18,7 +18,6 @@ export default function About() {
     if (!section || !headline || !bio) return
 
     const ctx = gsap.context(() => {
-      // Headline reveal
       const headlineSplit = new SplitText(headline, { type: 'chars,words' })
       gsap.set(headlineSplit.chars, {
         y: '110%',
@@ -43,7 +42,6 @@ export default function About() {
         once: true,
       })
 
-      // Bio paragraphs reveal
       const paras = bio.querySelectorAll('p')
       paras.forEach((p) => {
         const split = new SplitText(p, { type: 'lines', linesClass: 'bio-line' })
@@ -87,36 +85,34 @@ export default function About() {
 
   return (
     <section ref={sectionRef} className={styles.about} data-section="about">
-      <div className={styles.parallaxBg} aria-hidden="true" />
+      <div className={styles.atmosphere} aria-hidden="true" />
+      <span className={styles.bgWord} aria-hidden="true">BEYOND</span>
 
-      <div className={styles.grid}>
-        <span className={styles.rotatedLabel} aria-hidden="true">
-          About
-        </span>
+      <div className={styles.inner}>
+        <div className={styles.labelRow}>
+          <span className={styles.sectionLabel}>02 — About</span>
+          <div className={styles.labelLine} />
+        </div>
 
-        <div className={styles.rightCol}>
-          <h2 ref={headlineRef} className={styles.headline}>
-            MORE THAN
-            <br />
-            JUST CODE.
-          </h2>
+        <h2 ref={headlineRef} className={styles.headline}>
+          BEYOND<br />THE CODE.
+        </h2>
 
-          <div className={styles.divider} />
+        <div className={styles.accentLine} />
 
-          <div ref={bioRef} className={styles.bio}>
-            <p>
-              I&apos;m Shahzod, a Full-Stack Developer focused on building meaningful digital
-              products.
-            </p>
-            <p>
-              My journey started with frontend development, where I learned how to turn ideas into
-              intuitive interfaces. Over time, I expanded into backend engineering, system
-              architecture, API integrations, and automation.
-            </p>
-            <p>
-              I enjoy exploring the intersection of engineering, design, and emerging technologies.
-            </p>
-          </div>
+        <div ref={bioRef} className={styles.bio}>
+          <p>
+            I&apos;m Shahzod, a Full-Stack Developer focused on building meaningful digital
+            products.
+          </p>
+          <p>
+            My journey started with frontend development, where I learned how to turn ideas into
+            intuitive interfaces. Over time, I expanded into backend engineering, system
+            architecture, API integrations, and automation.
+          </p>
+          <p>
+            I enjoy exploring the intersection of engineering, design, and emerging technologies.
+          </p>
         </div>
       </div>
     </section>

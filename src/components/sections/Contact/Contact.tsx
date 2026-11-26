@@ -23,7 +23,6 @@ export default function Contact() {
   const sceneRef = useRef<ContactScene | null>(null)
   const rafRef = useRef<number>(0)
 
-  // Three.js contact scene
   useEffect(() => {
     const isMobile = window.innerWidth < 768
     if (isMobile) return
@@ -55,7 +54,6 @@ export default function Contact() {
     }
   }, [])
 
-  // Text animations
   useEffect(() => {
     const section = sectionRef.current
     const heading = headingRef.current
@@ -97,14 +95,16 @@ export default function Contact() {
   return (
     <section ref={sectionRef} className={styles.contact} data-section="contact">
       <div ref={canvasRef} className={styles.canvas} aria-hidden="true" />
+      <div className={styles.atmosphere} aria-hidden="true" />
 
       <div className={styles.inner}>
         <p className={styles.sectionLabel}>06 — Contact</p>
 
         <h2 ref={headingRef} className={styles.heading}>
-          <span className={styles.line1}>HAVE AN IDEA?</span>
-          <span className={styles.line2}>
-            LET&apos;S MAKE IT REAL<span className={styles.period}>.</span>
+          <span className={styles.line1}>LET&apos;S CREATE</span>
+          <span className={styles.line2}>SOMETHING</span>
+          <span className={styles.line3}>
+            UNFORGETTABLE<span className={styles.period}>.</span>
           </span>
         </h2>
 
