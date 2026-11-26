@@ -104,7 +104,7 @@ export default function Hero({ playReveal }: HeroProps) {
         transformOrigin: 'left bottom',
       })
 
-      const tl = gsap.timeline({ delay: 0.1 })
+      const tl = gsap.timeline()
 
       tl.to(split.chars, {
         y: '0%',

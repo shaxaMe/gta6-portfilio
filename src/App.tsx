@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import { initRenderer, disposeRenderer } from '@/three/renderer'
 import { initLenis, destroyLenis } from '@/animations/lenis'
 
@@ -31,10 +31,10 @@ export default function App() {
     }
   }, [])
 
-  function handlePreloaderComplete() {
+  const handlePreloaderComplete = useCallback(() => {
     setLoaded(true)
     setHeroReady(true)
-  }
+  }, [])
 
   return (
     <>

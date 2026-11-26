@@ -12,7 +12,6 @@ export default function Preloader({ onComplete }: PreloaderProps) {
   const counterRef = useRef<HTMLSpanElement>(null)
   const path1Ref = useRef<SVGPathElement>(null)
   const path2Ref = useRef<SVGPathElement>(null)
-
   useEffect(() => {
     const container = containerRef.current
     const fill = progressFillRef.current
@@ -30,11 +29,7 @@ export default function Preloader({ onComplete }: PreloaderProps) {
       gsap.set(p1, { strokeDasharray: len1, strokeDashoffset: len1 })
       gsap.set(p2, { strokeDasharray: len2, strokeDashoffset: len2 })
 
-      const tl = gsap.timeline({
-        onComplete: () => {
-          onComplete()
-        },
-      })
+      const tl = gsap.timeline()
 
       // Draw SVG paths
       tl.to(p1, {
@@ -75,6 +70,10 @@ export default function Preloader({ onComplete }: PreloaderProps) {
         )
         // Hold briefly
         .to({}, { duration: 0.3 })
+        // Fire onComplete at the START of the wipe — hero animations
+        // play during the 0.9s exit so content is already revealing
+        // as the preloader lifts away.
+        .call(() => onComplete())
         // Wipe entire preloader up
         .to(container, {
           yPercent: -100,

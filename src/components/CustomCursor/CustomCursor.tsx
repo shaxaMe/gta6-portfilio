@@ -33,6 +33,14 @@ export default function CustomCursor() {
       ringY(e.clientY)
     }
 
+    function onMouseEnter() {
+      gsap.to([dot, ring], { opacity: 1, duration: 0.3, ease: 'power2.out' })
+    }
+
+    function onMouseLeave() {
+      gsap.to([dot, ring], { opacity: 0, duration: 0.3, ease: 'power2.out' })
+    }
+
     function onMouseOver(e: MouseEvent) {
       const target = e.target as Element
       if (target.closest('a, button, [data-magnetic]')) {
@@ -48,11 +56,15 @@ export default function CustomCursor() {
     }
 
     window.addEventListener('mousemove', onMouseMove)
+    document.addEventListener('mouseenter', onMouseEnter)
+    document.addEventListener('mouseleave', onMouseLeave)
     document.addEventListener('mouseover', onMouseOver)
     document.addEventListener('mouseout', onMouseOut)
 
     return () => {
       window.removeEventListener('mousemove', onMouseMove)
+      document.removeEventListener('mouseenter', onMouseEnter)
+      document.removeEventListener('mouseleave', onMouseLeave)
       document.removeEventListener('mouseover', onMouseOver)
       document.removeEventListener('mouseout', onMouseOut)
     }
