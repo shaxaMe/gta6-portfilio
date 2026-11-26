@@ -106,3 +106,24 @@
     display: none;
   }
 }
+
+@media (max-width: 480px) {
+  .beyond {
+    padding: 4rem var(--container-padding);
+  }
+
+  .headline {
+    font-size: clamp(2.5rem, 10vw, 4rem);
+    margin-bottom: 2rem;
+  }
+
+  .item {
+    grid-template-columns: 2rem 1fr;
+    gap: 1rem;
+    padding: 1rem 0;
+  }
+
+  .itemLabel {
+    font-size: clamp(1rem, 4.5vw, 1.4rem);
+  }
+}

@@ -165,3 +165,26 @@
     font-size: clamp(2.5rem, 8vw, 4rem);
   }
 }
+
+@media (max-width: 480px) {
+  .inner {
+    padding: 4rem var(--container-padding);
+  }
+
+  .sectionHeading {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    margin-bottom: 2.5rem;
+  }
+
+  .chapterYear {
+    font-size: clamp(2rem, 7vw, 3rem);
+  }
+
+  .chapterTitle {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+
+  .chapter {
+    padding: 2rem 0;
+  }
+}

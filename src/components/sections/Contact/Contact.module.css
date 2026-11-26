@@ -157,3 +157,34 @@
     padding: 1rem 0;
   }
 }
+
+@media (max-width: 480px) {
+  .contact {
+    padding: 4rem var(--container-padding) 3rem;
+    min-height: unset;
+  }
+
+  .line1,
+  .line2,
+  .line3 {
+    font-size: clamp(2rem, 9vw, 3.5rem);
+  }
+
+  .supportText {
+    font-size: 0.9rem;
+  }
+
+  .linkIcon {
+    width: 30px;
+    height: 30px;
+    font-size: 0.7rem;
+  }
+
+  .linkLabel {
+    font-size: 0.85rem;
+  }
+
+  .linkType {
+    display: none;
+  }
+}

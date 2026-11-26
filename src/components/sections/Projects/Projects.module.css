@@ -287,3 +287,21 @@
   height: 1px;
   width: 3rem;
 }
+
+@media (max-width: 480px) {
+  .mobileWrap {
+    padding: 3rem var(--container-padding) 4rem;
+  }
+
+  .mobilePanelTitle {
+    font-size: clamp(1.4rem, 6vw, 2rem);
+  }
+
+  .mobileCard {
+    padding: 1.5rem 0;
+  }
+
+  .mobileCardNumber {
+    font-size: 1.5rem;
+  }
+}

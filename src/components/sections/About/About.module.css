@@ -110,3 +110,23 @@
     transform: none;
   }
 }
+
+@media (max-width: 480px) {
+  .about {
+    padding: 4rem var(--container-padding);
+    min-height: unset;
+  }
+
+  .headline {
+    font-size: clamp(2.5rem, 11vw, 4rem);
+    margin-bottom: 1.5rem;
+  }
+
+  .bio p {
+    font-size: 0.95rem;
+  }
+
+  .labelRow {
+    margin-bottom: 1.25rem;
+  }
+}

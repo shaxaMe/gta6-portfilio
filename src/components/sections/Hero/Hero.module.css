@@ -185,7 +185,7 @@
     flex-direction: column;
     align-items: flex-start;
     justify-content: flex-end;
-    gap: 2rem;
+    gap: 1.5rem;
     padding-bottom: clamp(2rem, 5vh, 3rem);
   }
 
@@ -204,5 +204,34 @@
 
   .scrollIndicator {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .hero {
+    min-height: 100svh;
+  }
+
+  .heading {
+    font-size: clamp(3rem, 12vw, 5rem);
+  }
+
+  .topBar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+  }
+
+  .content {
+    gap: 1rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .tagline {
+    font-size: clamp(1.8rem, 7vw, 2.8rem);
+  }
+
+  .subtitle {
+    font-size: 0.6rem;
   }
 }
