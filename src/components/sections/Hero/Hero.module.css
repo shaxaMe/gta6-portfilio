@@ -181,12 +181,27 @@
 }
 
 @media (max-width: 768px) {
+  .topBar {
+    display: none;
+  }
+
+  .hero {
+    height: auto;
+    min-height: unset;
+  }
+
   .content {
+    height: auto;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: flex-end;
+    justify-content: flex-start;
     gap: 1.5rem;
-    padding-bottom: clamp(2rem, 5vh, 3rem);
+    padding-top: clamp(5rem, 14vh, 8rem);
+    padding-bottom: clamp(3rem, 7vh, 5rem);
+  }
+
+  .nameBlock {
+    flex: none;
   }
 
   .taglineBlock {
@@ -208,30 +223,26 @@
 }
 
 @media (max-width: 480px) {
-  .hero {
-    min-height: 100svh;
-  }
-
   .heading {
-    font-size: clamp(3rem, 12vw, 5rem);
-  }
-
-  .topBar {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: 0.35rem;
+    font-size: clamp(3rem, 13vw, 5rem);
   }
 
   .content {
-    gap: 1rem;
-    padding-bottom: 2.5rem;
+    gap: 1.25rem;
+    padding-top: 4.5rem;
+    padding-bottom: 3rem;
   }
 
   .tagline {
     font-size: clamp(1.8rem, 7vw, 2.8rem);
   }
 
+  .taglinePre {
+    font-size: 0.6rem;
+  }
+
   .subtitle {
     font-size: 0.6rem;
+    margin-top: 0.75rem;
   }
 }

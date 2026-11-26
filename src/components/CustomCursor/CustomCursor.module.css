@@ -1,3 +1,10 @@
+@media (pointer: coarse) {
+  .dot,
+  .ring {
+    display: none;
+  }
+}
+
 .dot {
   position: fixed;
   top: 0;
