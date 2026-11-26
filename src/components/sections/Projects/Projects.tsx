@@ -91,15 +91,18 @@ export default function Projects() {
     const track = trackRef.current
     if (!section || !track) return
 
-    // Each panel gets exactly window.innerHeight (100vh) of scroll — simple and predictable.
-    // Total pin duration = (PANEL_COUNT - 1) screens.
-    const getPinDuration = () => (PANEL_COUNT - 1) * window.innerHeight
+    // PANEL_COUNT screens total: each panel gets exactly 1 viewport of scroll time,
+    // including the last panel which needs time to "land" before Journey begins.
+    // Custom ease accelerates travel over first (N-1)/N of progress, then holds.
+    const getPinDuration = () => PANEL_COUNT * window.innerHeight
     const getTravelX = () => -(PANEL_COUNT - 1) * window.innerWidth
+    const panelEase = (p: number) =>
+      Math.min(p * (PANEL_COUNT / (PANEL_COUNT - 1)), 1)
 
     const ctx = gsap.context(() => {
       gsap.to(track, {
-        x: getTravelX,          // function — recalculates on resize
-        ease: 'none',
+        x: getTravelX,
+        ease: panelEase,
         scrollTrigger: {
           trigger: section,
           start: 'top top',
